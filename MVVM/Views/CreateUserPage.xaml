@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskManager.MVVM.Views.CreateUserPage">
+    <VerticalStackLayout>
+        <Entry x:Name="userName" 
+            Placeholder="Log in name" 
+             Text="{Binding UserName}" />
+        <Entry x:Name="password" 
+                Placeholder="Password"
+               Text="{Binding Password}" />
+        <Entry x:Name="passwordRepeat" 
+                Placeholder="Repeat password" 
+               Text="{Binding PasswordRepeat}" />
+
+            <Button Text="Save User"
+               Command="{Binding CreateUserCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

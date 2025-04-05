@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskManager.MVVM.Views.UserHome"
+             Title="UserHome">
+    <VerticalStackLayout>
+        <Label Text="{ Binding User.Name, StringFormat='Gebruiker: {0}'}"
+            />
+        <Button 
+            Command =" {Binding ViewAllTasksCommand}"
+            Text="Bekijk alle taken"/>
+        <Button 
+    Command =" {Binding ViewProjectsCommand}"
+    Text="Bekijk alle Projecten"/>
+        <Button 
+    Command =" {Binding CreateTaskCommand}"
+    Text="Maak losse taak"/>
+
+
+
+    </VerticalStackLayout >
+</ContentPage>
