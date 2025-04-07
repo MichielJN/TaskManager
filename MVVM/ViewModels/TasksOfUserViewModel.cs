@@ -22,9 +22,11 @@ public class TasksOfUserViewModel : INotifyPropertyChanged
 
 
     public Command<ProjectTask> TaskTappedCommand { get; }
+    public Command BackCommand { get; }
 
     public TasksOfUserViewModel(User _user)
     {
+        BackCommand = new Command(OnBackPressed);
         TaskTappedCommand = new Command<ProjectTask>(OnTaskTapped);
         this.user = _user;
         this.NotStartedTasks = _user.ProjectTasks.FindAll(x => x.Status == 0).ToList();
@@ -35,6 +37,10 @@ public class TasksOfUserViewModel : INotifyPropertyChanged
     private void OnTaskTapped(ProjectTask tappedTask)
     {
         Application.Current.MainPage.Navigation.PushModalAsync(new IndividualTaskPage(user, tappedTask));
+    }
+    private void OnBackPressed()
+    {
+        Application.Current.MainPage.Navigation.PushModalAsync(new UserHome(this.user));
     }
 
 

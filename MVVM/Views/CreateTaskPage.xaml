@@ -11,7 +11,9 @@
              Increment="1"
              Value="{Binding Status}" />
         <Label Text="{Binding StatusText}"/>
-        <Button Command="{Binding CreateTaskCommand}"/>
-
+        <Button Command="{Binding CreateTaskCommand}"
+                Text="Sla taak op"/>
+        <TimePicker />
+        <DatePicker />
     </VerticalStackLayout>
 </ContentPage>

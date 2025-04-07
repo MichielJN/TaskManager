@@ -16,17 +16,23 @@ namespace TaskManager.MVVM.Models
 
         [ManyToOne]
         public ProjectTask ProjectTask { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public string? LabelText { get; set; }
 
         public StudySession()
         {
 
         }
 
-        public StudySession(TimeSpan elapsedTime, int ProjectTaskId, ProjectTask projectTask) 
+        public StudySession(TimeSpan elapsedTime, int ProjectTaskId, ProjectTask projectTask, DateTime startTime, DateTime endTime, string labelText) 
         {
             this.ElapsedTime = elapsedTime;
             this.ProjectTaskId = ProjectTaskId;
             this.ProjectTask = projectTask;
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+            this.LabelText = labelText;
         }
 
     }

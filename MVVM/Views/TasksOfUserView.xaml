@@ -4,65 +4,70 @@
              x:Class="TaskManager.MVVM.Views.TasksOfUserView"
              x:Name="TasksOfUser"
              Title="Tasks of User">
-
-    <ScrollView>
-        <Grid ColumnSpacing="10" Padding="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-
-            <VerticalStackLayout Grid.Column="0">
-                <Label Text="Nog niet gestart" FontAttributes="Bold" HorizontalOptions="Center" />
-                <CollectionView ItemsSource="{Binding NotStartedTasks}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame BorderColor="Gray" Margin="5" Padding="5">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding BindingContext.TaskTappedCommand, Source={x:Reference Name=TasksOfUser}}" CommandParameter="{Binding}" />
-                                </Frame.GestureRecognizers>
-                                <Label Text="{Binding Name}" />
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </VerticalStackLayout>
+    <VerticalStackLayout>
+        <ScrollView>
+            <Grid ColumnSpacing="10" Padding="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
 
-            <VerticalStackLayout Grid.Column="1">
-                <Label Text="Bezig" FontAttributes="Bold" HorizontalOptions="Center" />
-                <CollectionView ItemsSource="{Binding StartedTasks}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame BorderColor="Orange" Margin="5" Padding="5">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding BindingContext.TaskTappedCommand, Source={x:Reference Name=TasksOfUser}}" CommandParameter="{Binding}" />
-                                </Frame.GestureRecognizers>
-                                <Label Text="{Binding Name}" />
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="0">
+                    <Label Text="Nog niet gestart" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <CollectionView ItemsSource="{Binding NotStartedTasks}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BorderColor="Gray" Margin="5" Padding="5">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BindingContext.TaskTappedCommand, Source={x:Reference Name=TasksOfUser}}" CommandParameter="{Binding}" />
+                                    </Frame.GestureRecognizers>
+                                    <Label Text="{Binding Name}" />
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
 
 
-            <VerticalStackLayout Grid.Column="2">
-                <Label Text="Klaar" FontAttributes="Bold" HorizontalOptions="Center" />
-                <CollectionView ItemsSource="{Binding FinishedTasks}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame BorderColor="Green" Margin="5" Padding="5">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding BindingContext.TaskTappedCommand, Source={x:Reference Name=TasksOfUser}}" CommandParameter="{Binding}" />
-                                </Frame.GestureRecognizers>
-                                <Label Text="{Binding Name}" />
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </VerticalStackLayout>
-        </Grid>
-    </ScrollView>
+                <VerticalStackLayout Grid.Column="1">
+                    <Label Text="Bezig" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <CollectionView ItemsSource="{Binding StartedTasks}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BorderColor="Orange" Margin="5" Padding="5">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BindingContext.TaskTappedCommand, Source={x:Reference Name=TasksOfUser}}" CommandParameter="{Binding}" />
+                                    </Frame.GestureRecognizers>
+                                    <Label Text="{Binding Name}" />
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+
+                <VerticalStackLayout Grid.Column="2">
+                    <Label Text="Klaar" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <CollectionView ItemsSource="{Binding FinishedTasks}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BorderColor="Green" Margin="5" Padding="5">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BindingContext.TaskTappedCommand, Source={x:Reference Name=TasksOfUser}}" CommandParameter="{Binding}" />
+                                    </Frame.GestureRecognizers>
+                                    <Label Text="{Binding Name}" />
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+            </Grid>
+
+        </ScrollView>
+        <Button Text="Back"
+                Command="{Binding BackCommand}"/>
+    </VerticalStackLayout>
 </ContentPage>

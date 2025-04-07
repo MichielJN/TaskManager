@@ -14,7 +14,7 @@ namespace TaskManager.Security
                 Type = Argon2Type.HybridAddressing, // Argon2id
                 Version = Argon2Version.Nineteen,
                 TimeCost = 4,
-                MemoryCost = 1 << 16,
+                MemoryCost = 1 << 14,
                 Lanes = 2,
                 Threads = Environment.ProcessorCount,
                 Salt = Encoding.UTF8.GetBytes(salt),

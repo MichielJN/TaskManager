@@ -80,7 +80,7 @@ namespace TaskManager.Data.Repositories
         {
             try
             {
-                return connection.Table<T>().FirstOrDefault(x => x.Id == id);
+                return connection.GetWithChildren<T>(id);
             }
             catch (Exception ex)
             {
@@ -91,14 +91,20 @@ namespace TaskManager.Data.Repositories
 
         public T? GetEntityByName(string name)
         {
+            
             try
             {           
-                return connection.Table<T>().FirstOrDefault(x => x.Name == name);
+                var entity = connection.Table<T>().FirstOrDefault(x => x.Name == name);
+                if(entity != null)
+                {
+                    return connection.GetWithChildren<T>(entity.Id);
+                }
             }
             catch(Exception ex)
             {
                 StatusMessage = $"Error: {ex.Message}";
             }
+
             return null;
         }
         public List<T>? GetEntities()

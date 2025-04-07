@@ -8,10 +8,12 @@
              Text="{Binding UserName}" />
         <Entry x:Name="password" 
                 Placeholder="Password"
-               Text="{Binding Password}" />
+               Text="{Binding Password}" 
+               IsPassword="True"/>
         <Entry x:Name="passwordRepeat" 
                 Placeholder="Repeat password" 
-               Text="{Binding PasswordRepeat}" />
+               Text="{Binding PasswordRepeat}" 
+               IsPassword="True"/>
 
             <Button Text="Save User"
                Command="{Binding CreateUserCommand}"/>

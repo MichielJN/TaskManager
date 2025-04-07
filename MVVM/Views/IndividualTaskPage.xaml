@@ -13,6 +13,20 @@
         <Button 
             Text="{Binding ButtonText}"
             Command="{Binding SessionTimerCommand}"/>
-        
+        <CollectionView ItemsSource="{Binding StudySessions}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border >
+                        <VerticalStackLayout>
+                            <Label Text="{Binding LabelText}" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Label
+            Text="{Binding TotalSpentTime, StringFormat='Tijd besteed: {0:hh\\:mm\\:ss}'}"/>
+        <Button Text="Terug" Command="{Binding BackCommand}"/>
+
     </VerticalStackLayout>
 </ContentPage>
