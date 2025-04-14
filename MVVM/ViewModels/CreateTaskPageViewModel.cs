@@ -66,6 +66,7 @@ public class CreateTaskPageViewModel : INotifyPropertyChanged
         ProjectTask _task = new ProjectTask(this.Name, user.Id, user, Status );
         App.ProjectTaskRepo.SaveEntity(_task);
         user.ProjectTasks.Add( _task );
+        Application.Current.MainPage.DisplayAlert("Succes", "Succesfully created task", "OK");
         Application.Current.MainPage.Navigation.PushModalAsync(new UserHome(user));
     }
 

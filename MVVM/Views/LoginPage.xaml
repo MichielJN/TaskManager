@@ -13,5 +13,6 @@
                 Command="{Binding LogInCommand}"/>
         <Button Text="Create user"
                 Command="{Binding CreateUserCommand}"/>
+        <Button Text="Inloggegevens vergeten" />
     </VerticalStackLayout>
 </ContentPage>

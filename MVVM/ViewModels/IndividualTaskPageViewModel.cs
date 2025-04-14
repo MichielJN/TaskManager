@@ -51,6 +51,8 @@ public class IndividualTaskPageViewModel : INotifyPropertyChanged
         set
         {
             status = value;
+            this.projectTask.Status = status;
+            App.ProjectTaskRepo.SaveEntity(this.projectTask);
             OnPropertyChanged();
             StatusText = UpdateStatusText();
         }

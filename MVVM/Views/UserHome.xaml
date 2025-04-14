@@ -15,8 +15,20 @@
         <Button 
     Command =" {Binding CreateTaskCommand}"
     Text="Maak losse taak"/>
+        <Button 
+            Text="Maak rooster"
+            Command="{Binding CreateScheduleCommand}"/>
 
-
+        <Label
+            Text="{Binding Schedule.PlannedHours, StringFormat='Geplande tijd: {0:hh\\:mm\\:ss}'}"/>
+        
+            <CarouselView ItemsSource="{Binding Schedule.Stages}">
+            <CarouselView.ItemTemplate>
+                <DataTemplate >
+                    <Label Text="{Binding Name}"/>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
 
     </VerticalStackLayout >
 </ContentPage>

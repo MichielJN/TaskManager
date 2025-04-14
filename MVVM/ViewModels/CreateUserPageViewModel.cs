@@ -50,6 +50,7 @@ public class CreateUserPageViewModel : INotifyPropertyChanged
             {
                 User user = new User(UserName, hash1, salt);
                 App.UserRepo.SaveEntity(user);
+                Application.Current.MainPage.DisplayAlert("Succes", "Succesfully created user", "OK");
                 Application.Current.MainPage.Navigation.PushModalAsync(new LoginPage());
             }
             else

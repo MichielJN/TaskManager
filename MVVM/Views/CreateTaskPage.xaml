@@ -6,14 +6,37 @@
     <VerticalStackLayout>
         <Entry Placeholder="Taak naam"
                Text="{Binding Name}"/>
-        <Stepper Minimum="0"
+        <HorizontalStackLayout>
+            <Label Text="Voortgang" WidthRequest="100"/>
+            <Stepper Minimum="0"
              Maximum="2"
              Increment="1"
              Value="{Binding Status}" />
-        <Label Text="{Binding StatusText}"/>
+            <Label Text="{Binding StatusText}" 
+           VerticalOptions="Center"
+           Margin="10,0,0,0"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <Label Text="Geplande uren" WidthRequest="100"/>
+            <Slider Minimum="0"
+             Value="0"/>
+            <Label Text="{Binding Value}" 
+           VerticalOptions="Center"
+           Margin="10,0,0,0"/>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout>
+            <Label Text="Start" WidthRequest="100"/>
+            <TimePicker />
+            <DatePicker />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Deadline" WidthRequest="100"/>
+            <TimePicker />
+                <DatePicker />
+        </HorizontalStackLayout>
         <Button Command="{Binding CreateTaskCommand}"
                 Text="Sla taak op"/>
-        <TimePicker />
-        <DatePicker />
     </VerticalStackLayout>
 </ContentPage>

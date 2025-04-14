@@ -10,6 +10,10 @@ namespace TaskManager
         public static BaseRepository<ProjectTask>? ProjectTaskRepo { get; private set; }
         public static BaseRepository<Project>? ProjectRepo { get; private set; }
         public static BaseRepository<StudySession>? StudySessionRepo { get; private set; }
+        public static BaseRepository<TaskType>? TaskTypeRepo { get; private set; }
+        public static BaseRepository<SuccessorPredecessorTaskIds>? SuccessorPredecessorTaskIdsRepo { get; private set; }
+        public static BaseRepository<Schedule>? ScheduleRepo { get; private set; }
+
 
         public App()
         {
@@ -20,6 +24,9 @@ namespace TaskManager
             StageRepo = new BaseRepository<Stage>();
             ProjectRepo = new BaseRepository<Project>();
             StudySessionRepo = new BaseRepository<StudySession>();
+            TaskTypeRepo = new BaseRepository<TaskType>();
+            SuccessorPredecessorTaskIdsRepo = new BaseRepository<SuccessorPredecessorTaskIds>();
+            ScheduleRepo = new BaseRepository<Schedule>();
 
         }
 

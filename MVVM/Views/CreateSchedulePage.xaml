@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskManager.MVVM.Views.CreateSchedulePage"
+             Title="CreateSchedulePage">
+    <VerticalStackLayout>
+        <Label Text="Maak rooster" />
+        <HorizontalStackLayout>
+            <Slider Value="{Binding PlannedHours}"
+                    Minimum="0"
+                    Maximum="10000"
+                    WidthRequest="500"/>
+            <Label Text="{Binding PlannedHours, StringFormat='Geplande tijd: {0:F1}'}" WidthRequest="100"/>
+        </HorizontalStackLayout>
+    <Button Command="{Binding CreateScheduleCommand}"/>
+        <Button Text="Terug" />
+    </VerticalStackLayout>
+</ContentPage>

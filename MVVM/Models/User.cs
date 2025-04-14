@@ -16,6 +16,10 @@ namespace TaskManager.MVVM.Models
         public List<Project> Projects { get; set; } = new List<Project>();
         [OneToMany]
         public List<ProjectTask> ProjectTasks { get; set; } = new List<ProjectTask>();
+        [ForeignKey(typeof(Schedule))]
+        public int ScheduleId { get; set; }
+        [OneToOne(CascadeOperations = CascadeOperation.All)]
+        public Schedule Schedule { get; set; }
 
 
         public User()
