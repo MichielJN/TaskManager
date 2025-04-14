@@ -34,8 +34,10 @@ public class CreateSchedulePageViewModel : INotifyPropertyChanged
     {
         Schedule schedule = new Schedule();
         schedule.CreateWeek(User, PlannedHours);
-        this.User = App.UserRepo.GetEntityWithChildren(User.Id);
-        //this.User.Schedule = App.ScheduleRepo.GetEntityWithChildren(User.Schedule.Id);
+        schedule = App.ScheduleRepo.SaveEntityWithChildren(schedule);
+
+
+        this.User.Schedule = schedule;
         Application.Current.MainPage.Navigation.PushModalAsync(new UserHome(this.User));
 
     }

@@ -12,6 +12,7 @@
         <Button 
     Command =" {Binding ViewProjectsCommand}"
     Text="Bekijk alle Projecten"/>
+        <Button Text="Pas account aan"/>
         <Button 
     Command =" {Binding CreateTaskCommand}"
     Text="Maak losse taak"/>

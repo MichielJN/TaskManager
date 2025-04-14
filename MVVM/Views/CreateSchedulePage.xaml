@@ -9,10 +9,10 @@
             <Slider Value="{Binding PlannedHours}"
                     Minimum="0"
                     Maximum="10000"
-                    WidthRequest="500"/>
+                    WidthRequest="100"/>
             <Label Text="{Binding PlannedHours, StringFormat='Geplande tijd: {0:F1}'}" WidthRequest="100"/>
         </HorizontalStackLayout>
-    <Button Command="{Binding CreateScheduleCommand}"/>
+    <Button Command="{Binding CreateScheduleCommand}" Text="Sla rooster op"/>
         <Button Text="Terug" />
     </VerticalStackLayout>
 </ContentPage>

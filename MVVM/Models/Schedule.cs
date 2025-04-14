@@ -40,12 +40,9 @@ namespace TaskManager.MVVM.Models
             this.Owner = user;
             
 
-            this.Id = App.ScheduleRepo.SaveEntityWithChildren(this);
-            user.Schedule = this;
-            user.ScheduleId = this.Id;
-            App.UserRepo.SaveEntityWithChildren(user);
+
             
-            string hallo = "";
+
         }
 
 

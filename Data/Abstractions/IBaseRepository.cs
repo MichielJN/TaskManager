@@ -11,8 +11,8 @@ namespace TaskManager.Data.Abstractions
     {
 
         // Create/Update
-        int SaveEntity(T entity);
-        int SaveEntityWithChildren(T entity);
+        T? SaveEntity(T entity);
+        T? SaveEntityWithChildren(T entity);
         // Read one/read many
         T? GetEntity(int id);
         T? GetEntityWithChildren(int id);

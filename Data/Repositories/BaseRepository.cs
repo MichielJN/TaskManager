@@ -22,7 +22,7 @@ namespace TaskManager.Data.Repositories
             connection.CreateTable<T>();
         }
 
-        public int SaveEntity(T entity)
+        public T? SaveEntity(T entity)
         {
             int result = 0;
             try
@@ -31,41 +31,41 @@ namespace TaskManager.Data.Repositories
                 {
                     result = connection.Insert(entity);
                     StatusMessage = $"{result} row(s) added";
-                    return entity.Id;
+                    return entity;
                 }
                 else
                 {
                     result = connection.Update(entity);
                     StatusMessage = $"{result} row(s) updated";
-                    return entity.Id;
+                    return entity;
                 }
             }
             catch (Exception ex)
             {
                 StatusMessage = $"Error: {ex.Message}";
-                return 0;
+                return null;
             }
         }
 
-        public int SaveEntityWithChildren(T entity)
+        public T? SaveEntityWithChildren(T entity)
         {
             try
             {
                 if (entity.Id == 0)
                 {
                     connection.InsertWithChildren(entity, true);
-                    return entity.Id;
+                    return entity;
                 }
                 else
                 {
                     connection.UpdateWithChildren(entity);
-                    return entity.Id;
+                    return entity;
                 }
             }
             catch (Exception ex)
             {
                 StatusMessage = $"Error: {ex.Message}";
-                return 0;
+                return null;
             }
         }
 
