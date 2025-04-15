@@ -34,6 +34,11 @@ namespace TaskManager.MVVM.Models
             this.Name = name;
             this.Project = project;
         }
+        public Stage(string name, Schedule schedule, int i)
+        {
+            this.Name = name;
+            this.Schedule = schedule;
+        }
 
     }
 }

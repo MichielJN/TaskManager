@@ -19,25 +19,42 @@ public class UserHomeViewModel : INotifyPropertyChanged
     public UserHomeViewModel(User user)
     {
         this.User = App.UserRepo.GetEntityWithChildren(user.Id);
-        if(User.Schedule != null)
+        if(user.ScheduleId != null)
         {
-            if (User.Schedule.Stages == null | user.Schedule.Stages.Count == 0)
+            //user.Schedule.Days = App.StageRepo.GetEntitiesWithChildren().FindAll(x => x.ScheduleId == user.Schedule.Id);
+            foreach(Stage stage in App.StageRepo.GetEntities())
+            {
+                if(stage.ScheduleId == this.User.Schedule.Id)
+                {
+                    this.User.Schedule.Days.Add(stage);
+                }
+            }
+
+
+        }
+
+
+
+
+        if (User.Schedule != null)
+        {
+            if (User.Schedule.Days == null | User.Schedule.Days.Count == 0)
             {
                 Schedule schedule = new Schedule();
                 schedule.Name = "";
                 Stage stage = new Stage();
                 stage.Name = "Geen rooster";
-                schedule.Stages.Add(stage);
+                schedule.Days.Add(stage);
                 this.User.Schedule = schedule;
                 this.Schedule = this.User.Schedule;
             }
-            this.User.Schedule = App.ScheduleRepo.GetEntityWithChildren(user.Schedule.Id);
+            
             this.Schedule = User.Schedule;
             if(User.Schedule.Stages == null)
             {
                 Stage stage = new Stage();
                 stage.Name = "Geen dagen";
-                user.Schedule.Stages.Add(stage);
+                User.Schedule.Days.Add(stage);
             }
         }
         else
@@ -46,12 +63,12 @@ public class UserHomeViewModel : INotifyPropertyChanged
             schedule.Name = "";
             Stage stage = new Stage();
             stage.Name = "Geen rooster";
-            schedule.Stages.Add(stage);
+            schedule.Days.Add(stage);
             this.User.Schedule = schedule;
             this.Schedule = this.User.Schedule;
         }
 
-            ViewAllTasksCommand = new Command(OnViewAllTasks);
+        ViewAllTasksCommand = new Command(OnViewAllTasks);
         ViewProjectsCommand = new Command(OnViewProjects);
         CreateTaskCommand = new Command(OnCreateTask);
         CreateScheduleCommand = new Command(OnCreateSchedule);

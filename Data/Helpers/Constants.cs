@@ -9,7 +9,7 @@ namespace TaskManager.Data.Helpers
 {
     public static class Constants
     {
-        private const string DBFileName = "TaskDB.db3";
+        private const string DBFileName = "ProjectManager.db3";
 
         public const SQLiteOpenFlags flags =
         SQLiteOpenFlags.ReadWrite |

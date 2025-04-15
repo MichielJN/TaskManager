@@ -34,18 +34,22 @@ public class CreateSchedulePageViewModel : INotifyPropertyChanged
     {
         Schedule schedule = new Schedule();
         schedule.CreateWeek(User, PlannedHours);
-        schedule = App.ScheduleRepo.SaveEntityWithChildren(schedule);
-
+        schedule = App.ScheduleRepo.SaveEntity(schedule);
+        for(int i = 0; i < 7; i++)
+        {
+            schedule.Days[i].ProjectId = 0;
+            schedule.Days[i].ScheduleId = schedule.Id;
+            App.StageRepo.SaveEntity(schedule.Days[i]);
+        }
+        schedule = App.ScheduleRepo.SaveEntity(schedule);
 
         this.User.Schedule = schedule;
+        this.User.ScheduleId = schedule.Id;
+        App.UserRepo.SaveEntityWithChildren(this.User);
         Application.Current.MainPage.Navigation.PushModalAsync(new UserHome(this.User));
 
     }
 
-    private void OnCreateTask()
-    {
-        Application.Current.MainPage.Navigation.PushModalAsync(new CreateTaskPage(User));
-    }
 
     public event PropertyChangedEventHandler? PropertyChanged;
     protected void OnPropertyChanged([CallerMemberName] string? name = null)

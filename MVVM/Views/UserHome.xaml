@@ -23,7 +23,7 @@
         <Label
             Text="{Binding Schedule.PlannedHours, StringFormat='Geplande tijd: {0:hh\\:mm\\:ss}'}"/>
         
-            <CarouselView ItemsSource="{Binding Schedule.Stages}">
+            <CarouselView ItemsSource="{Binding Schedule.Days}">
             <CarouselView.ItemTemplate>
                 <DataTemplate >
                     <Label Text="{Binding Name}"/>

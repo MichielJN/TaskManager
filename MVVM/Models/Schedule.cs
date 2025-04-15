@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskManager.Data.Abstractions;
 
 namespace TaskManager.MVVM.Models
 {
@@ -13,7 +14,8 @@ namespace TaskManager.MVVM.Models
         public int OwnerId { get; set; }
         [OneToOne(CascadeOperations = CascadeOperation.All)]
         public User Owner { get; set; }
-
+        [ManyToOne]
+        public List<Stage> Days { get; set; } = new List<Stage>();
         public Schedule() 
         { 
 
@@ -25,19 +27,21 @@ namespace TaskManager.MVVM.Models
             this.Stages = stages;
             this.PlannedHours = TimeSpan.FromDays(plannedHours);
         }
+
         public void CreateWeek(User user, float plannedHours)
         {
             List<Stage> weekDays = new List<Stage>()
-            {   new Stage("Monday", this),
-                new Stage("Tuesday", this), 
-                new Stage("Wednesday", this), 
-                new Stage("Thursday", this),
-                new Stage("Friday", this),
-                new Stage("Saturday", this),
-                new Stage("Sunday", this)    };
-            this.Stages = weekDays;
+            {   new Stage("Monday", this, 1),
+                new Stage("Tuesday", this, 1), 
+                new Stage("Wednesday", this, 1), 
+                new Stage("Thursday", this, 1),
+                new Stage("Friday", this, 1),
+                new Stage("Saturday", this, 1),
+                new Stage("Sunday", this, 1)    };
+            this.Days = weekDays;
             this.PlannedHours = TimeSpan.FromHours(plannedHours);
             this.Owner = user;
+            this.OwnerId = user.Id;
             
 
 
