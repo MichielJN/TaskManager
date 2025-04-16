@@ -20,12 +20,13 @@ namespace TaskManager.MVVM.Models
         { 
 
         }
-        public Schedule(User owner, float plannedHours, List<Stage> stages)
+         public Schedule(User owner, float plannedHours, List<Stage> stages)
+        : base(plannedHours, stages)
         {
             this.Owner = owner;
             this.OwnerId = owner.Id;
-            this.Stages = stages;
-            this.PlannedHours = TimeSpan.FromDays(plannedHours);
+            
+            
         }
 
         public void CreateWeek(User user, float plannedHours)

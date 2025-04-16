@@ -7,6 +7,7 @@ using Microsoft.Maui.Dispatching;
 using System.Collections.ObjectModel;
 
 
+
 namespace TaskManager.MVVM.ViewModels;
 
 public class IndividualTaskPageViewModel : INotifyPropertyChanged
@@ -26,7 +27,7 @@ public class IndividualTaskPageViewModel : INotifyPropertyChanged
     private TimeSpan totalSpentTime = TimeSpan.Zero;
 
 
-    public List<StudySession> StudySessions { get; set; } = new List<StudySession>();
+    public ObservableCollection<StudySession> StudySessions { get; set; } = new ObservableCollection<StudySession>();
     public TimeSpan TotalSpentTime
     {
         get => totalSpentTime;
@@ -97,9 +98,10 @@ public class IndividualTaskPageViewModel : INotifyPropertyChanged
         BackCommand = new Command(OnBackPressed);
 
         this.projectTask = App.ProjectTaskRepo.GetEntityWithChildren(_task.Id);
-        
-       // this.projectTask.studySessions = App.StudySessionRepo.GetEntitiesWithChildren().FindAll(x => x.ProjectTaskId == this.projectTask.Id);
-        this.StudySessions = projectTask.studySessions;
+
+        // this.projectTask.studySessions = App.StudySessionRepo.GetEntitiesWithChildren().FindAll(x => x.ProjectTaskId == this.projectTask.Id);
+        this.StudySessions = new ObservableCollection<StudySession>(projectTask.studySessions);
+
         this.status = projectTask.Status;
         this.user = _user;
         this.Name = _task.Name;
@@ -153,7 +155,8 @@ public class IndividualTaskPageViewModel : INotifyPropertyChanged
 
                 App.ProjectTaskRepo.SaveEntity(projectTask);
                 projectTask = App.ProjectTaskRepo.GetEntityWithChildren(projectTask.Id);
-                this.StudySessions = projectTask.studySessions;
+                this.StudySessions.Add(studySession);
+               
                 // this.TotalSpentTime += duration;
             }
 

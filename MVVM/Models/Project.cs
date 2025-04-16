@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManager.Data.Abstractions;
+using static Microsoft.Maui.Controls.Device;
 
 namespace TaskManager.MVVM.Models
 {
@@ -22,6 +23,16 @@ namespace TaskManager.MVVM.Models
         public DateTime dateEnd { get; set; }
         public TimeSpan PlannedHours { get; set; } = TimeSpan.Zero;
         public TimeSpan SpentHours { get; set; } = TimeSpan.Zero;
+
+        public Project()
+        {
+
+        }
+        public Project(float plannedHours, List<Stage> stages)
+        {
+            this.PlannedHours = TimeSpan.FromDays(plannedHours);
+            this.Stages = stages;
+        }
 
 
         public void CalculateTotalTimeSpent()
